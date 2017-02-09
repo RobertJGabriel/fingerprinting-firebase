@@ -112,7 +112,8 @@
             console.log(Date.now());
             firebase.database().ref('users/' + fingerprintId).set({
                 id: fingerprintId,
-                firstVisit: new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+                firstVisit: new Date().toJSON().slice(0, 10).replace(/-/g, '/'),
+                signup: 0
 
             });
         }
