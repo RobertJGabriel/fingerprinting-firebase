@@ -78,7 +78,7 @@
             canvas: true,
             screen_resolution: true
         }).get();
-
+        console.log("Your Id is the following :");
         console.log(fingerprintId);
 
         window.onload = function() {
@@ -86,8 +86,12 @@
             database.ref('users/' + fingerprintId).once('value', function(snapshot) {
                 
                 if (snapshot.val() !== null) {
+                    console.log("The Information we have on you");
+                    console.log(snapshot.val());
+                    console.log("New Url");
                     newUrl(fingerprintId);
                 } else {
+                     console.log("New User");
                     write(fingerprintId);
                 }
 
@@ -115,7 +119,7 @@
         }
 
         function newUrl(fingerprintId) {
-            console.log("ss");
+           
             database.ref('users/' + fingerprintId).child('urls').push({
                 url: window.location.href,
                 date: new Date().toJSON().slice(0, 10).replace(/-/g, '/')
